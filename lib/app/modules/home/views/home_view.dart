@@ -12,16 +12,57 @@ class HomeView extends GetView<HomeController> {
     double paddingTop = MediaQuery.of(context).padding.top;
     double paddingBottom = MediaQuery.of(context).padding.bottom;
 
+    AppBar myAppBar() {
+      return AppBar(
+        title: Text('Flexible'),
+        centerTitle: true,
+      );
+    }
+
+    double heightBody =
+        heightDevice - myAppBar().preferredSize.height - paddingTop;
+
     return Scaffold(
-      // appBar: AppBar(
-      //   title: Text('HomeView'),
-      //   centerTitle: true,
-      // ),
-      body: Container(
-        margin: EdgeInsets.only(top: paddingTop),
-        width: widthDevice * 0.5,
-        height: heightDevice * paddingTop - paddingBottom,
-        color: Colors.deepPurple,
+      appBar: myAppBar(),
+      body: Column(
+        children: [
+          Flexible(
+            flex: 4,
+            child: Container(
+              width: widthDevice * 0.5,
+              color: Colors.pink,
+            ),
+          ),
+          Flexible(
+            flex: 2,
+            child: Container(
+              width: widthDevice * 0.5,
+              color: Colors.orange,
+            ),
+          ),
+          Flexible(
+            flex: 2,
+            child: Container(
+              width: widthDevice * 0.5,
+              color: Colors.lightGreen.shade700,
+            ),
+          ),
+          // Container(
+          //   width: widthDevice * 0.5,
+          //   height: heightBody * 0.5,
+          //   color: Colors.pink,
+          // ),
+          // Container(
+          //   width: widthDevice * 0.5,
+          //   height: heightBody * 0.3,
+          //   color: Colors.orange,
+          // ),
+          // Container(
+          //   width: widthDevice * 0.5,
+          //   height: heightBody * 0.2,
+          //   color: Colors.lightGreen.shade700,
+          // ),
+        ],
       ),
     );
   }
