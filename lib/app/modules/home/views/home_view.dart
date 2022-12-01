@@ -26,27 +26,45 @@ class HomeView extends GetView<HomeController> {
       appBar: myAppBar(),
       body: Column(
         children: [
-          Flexible(
-            flex: 4,
-            child: Container(
-              width: widthDevice * 0.5,
-              color: Colors.pink,
-            ),
+          Row(
+            children: [
+              Container(
+                height: 55,
+                width: 55,
+                color: Colors.lightBlueAccent,
+              ),
+              Expanded(
+                child: ListTile(
+                  tileColor: Colors.limeAccent,
+                  leading: Icon(Icons.check_box),
+                  title: Text("Checklist"),
+                ),
+              ),
+              Container(
+                height: 55,
+                width: 55,
+                color: Colors.greenAccent,
+              ),
+            ],
           ),
-          Flexible(
-            flex: 2,
-            child: Container(
-              width: widthDevice * 0.5,
-              color: Colors.orange,
-            ),
-          ),
-          Flexible(
-            flex: 2,
-            child: Container(
-              width: widthDevice * 0.5,
-              color: Colors.lightGreen.shade700,
-            ),
-          ),
+//           Container(
+//             height: heightBody * 0.5,
+//             width: widthDevice * 0.5,
+//             color: Colors.pink,
+//           ),
+
+//           Container(
+//             height: heightBody * 0.1,
+//             width: widthDevice * 0.5,
+//             color: Colors.orange,
+//           ),
+// // Expanded digunakan untuk sisa
+//           Expanded(
+//             child: Container(
+//               width: widthDevice * 0.5,
+//               color: Colors.lightGreen.shade700,
+//             ),
+//           ),
           // Container(
           //   width: widthDevice * 0.5,
           //   height: heightBody * 0.5,
