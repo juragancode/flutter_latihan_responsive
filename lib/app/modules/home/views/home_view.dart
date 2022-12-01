@@ -5,11 +5,15 @@ import 'package:get/get.dart';
 import '../controllers/home_controller.dart';
 
 class HomeView extends GetView<HomeController> {
+  double widthDevice = Get.width;
+  double heightDevice = Get.height;
+
   @override
   Widget build(BuildContext context) {
-    double widthDevice = MediaQuery.of(context).size.width;
-    double heightDevice = MediaQuery.of(context).size.height;
-    double paddingTop = MediaQuery.of(context).padding.top;
+    // double widthDevice = MediaQuery.of(context).size.width;
+    // double heightDevice = MediaQuery.of(context).size.height;
+    double paddingTop =
+        context.mediaQueryPadding.top; // mediaQueryPadding merupakan fitur getx
     double paddingBottom = MediaQuery.of(context).padding.bottom;
 
     AppBar myAppBar() {
@@ -24,170 +28,22 @@ class HomeView extends GetView<HomeController> {
 
     return Scaffold(
       appBar: myAppBar(),
-      body: Wrap(
-        direction: Axis.vertical, // standart direction horizontal
+      body: Column(
         children: [
           Container(
-            margin: EdgeInsets.all(8),
-            width: widthDevice * 0.12,
-            height: 45,
+            width: widthDevice * 0.5,
+            height: heightBody * 0.5,
             color: Colors.orange,
           ),
           Container(
-            margin: EdgeInsets.all(8),
-            width: widthDevice * 0.12,
-            height: 45,
-            color: Colors.orange,
+            width: widthDevice * 0.5,
+            height: heightBody * 0.2,
+            color: Colors.red,
           ),
           Container(
-            margin: EdgeInsets.all(8),
-            width: widthDevice * 0.12,
-            height: 45,
-            color: Colors.orange,
-          ),
-          Container(
-            margin: EdgeInsets.all(8),
-            width: widthDevice * 0.12,
-            height: 45,
-            color: Colors.orange,
-          ),
-          Container(
-            margin: EdgeInsets.all(8),
-            width: widthDevice * 0.12,
-            height: 45,
-            color: Colors.orange,
-          ),
-          Container(
-            margin: EdgeInsets.all(8),
-            width: widthDevice * 0.12,
-            height: 45,
-            color: Colors.orange,
-          ),
-          Container(
-            margin: EdgeInsets.all(8),
-            width: widthDevice * 0.12,
-            height: 45,
-            color: Colors.orange,
-          ),
-          Container(
-            margin: EdgeInsets.all(8),
-            width: widthDevice * 0.12,
-            height: 45,
-            color: Colors.orange,
-          ),
-          Container(
-            margin: EdgeInsets.all(8),
-            width: widthDevice * 0.12,
-            height: 45,
-            color: Colors.orange,
-          ),
-          Container(
-            margin: EdgeInsets.all(8),
-            width: widthDevice * 0.12,
-            height: 45,
-            color: Colors.orange,
-          ),
-          Container(
-            margin: EdgeInsets.all(8),
-            width: widthDevice * 0.12,
-            height: 45,
-            color: Colors.orange,
-          ),
-          Container(
-            margin: EdgeInsets.all(8),
-            width: widthDevice * 0.12,
-            height: 45,
-            color: Colors.orange,
-          ),
-          Container(
-            margin: EdgeInsets.all(8),
-            width: widthDevice * 0.12,
-            height: 45,
-            color: Colors.orange,
-          ),
-          Container(
-            margin: EdgeInsets.all(8),
-            width: widthDevice * 0.12,
-            height: 45,
-            color: Colors.orange,
-          ),
-          Container(
-            margin: EdgeInsets.all(8),
-            width: widthDevice * 0.12,
-            height: 45,
-            color: Colors.orange,
-          ),
-          Container(
-            margin: EdgeInsets.all(8),
-            width: widthDevice * 0.12,
-            height: 45,
-            color: Colors.orange,
-          ),
-          Container(
-            margin: EdgeInsets.all(8),
-            width: widthDevice * 0.12,
-            height: 45,
-            color: Colors.orange,
-          ),
-          Container(
-            margin: EdgeInsets.all(8),
-            width: widthDevice * 0.12,
-            height: 45,
-            color: Colors.orange,
-          ),
-          Container(
-            margin: EdgeInsets.all(8),
-            width: widthDevice * 0.12,
-            height: 45,
-            color: Colors.orange,
-          ),
-          Container(
-            margin: EdgeInsets.all(8),
-            width: widthDevice * 0.12,
-            height: 45,
-            color: Colors.orange,
-          ),
-          Container(
-            margin: EdgeInsets.all(8),
-            width: widthDevice * 0.12,
-            height: 45,
-            color: Colors.orange,
-          ),
-          Container(
-            margin: EdgeInsets.all(8),
-            width: widthDevice * 0.12,
-            height: 45,
-            color: Colors.orange,
-          ),
-          Container(
-            margin: EdgeInsets.all(8),
-            width: widthDevice * 0.12,
-            height: 45,
-            color: Colors.orange,
-          ),
-          Container(
-            margin: EdgeInsets.all(8),
-            width: widthDevice * 0.12,
-            height: 45,
-            color: Colors.orange,
-          ),
-          Container(
-            margin: EdgeInsets.all(8),
-            width: widthDevice * 0.12,
-            height: 45,
-            color: Colors.orange,
-          ),
-          Container(
-            margin: EdgeInsets.all(8),
-            width: widthDevice * 0.12,
-            height: 45,
-            color: Colors.orange,
-          ),
-          Container(
-            margin: EdgeInsets.all(8),
-            width: widthDevice * 0.12,
-            height: 45,
-            color: Colors.orange,
+            width: widthDevice * 0.5,
+            height: heightBody * 0.3,
+            color: Colors.green,
           ),
         ],
       ),
