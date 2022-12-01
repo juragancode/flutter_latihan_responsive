@@ -24,63 +24,21 @@ class HomeView extends GetView<HomeController> {
 
     return Scaffold(
       appBar: myAppBar(),
-      body: Column(
-        children: [
-          Row(
-            children: [
-              Container(
-                height: 55,
-                width: 55,
-                color: Colors.lightBlueAccent,
+      body: Container(
+        height: 100,
+        width: 200,
+        color: Colors.orange,
+        child: Center(
+          child: FittedBox(
+            child: Text(
+              "Hallooooooooo!",
+              style: TextStyle(
+                fontSize: 30,
+                fontWeight: FontWeight.bold,
               ),
-              Expanded(
-                child: ListTile(
-                  tileColor: Colors.limeAccent,
-                  leading: Icon(Icons.check_box),
-                  title: Text("Checklist"),
-                ),
-              ),
-              Container(
-                height: 55,
-                width: 55,
-                color: Colors.greenAccent,
-              ),
-            ],
+            ),
           ),
-//           Container(
-//             height: heightBody * 0.5,
-//             width: widthDevice * 0.5,
-//             color: Colors.pink,
-//           ),
-
-//           Container(
-//             height: heightBody * 0.1,
-//             width: widthDevice * 0.5,
-//             color: Colors.orange,
-//           ),
-// // Expanded digunakan untuk sisa
-//           Expanded(
-//             child: Container(
-//               width: widthDevice * 0.5,
-//               color: Colors.lightGreen.shade700,
-//             ),
-//           ),
-          // Container(
-          //   width: widthDevice * 0.5,
-          //   height: heightBody * 0.5,
-          //   color: Colors.pink,
-          // ),
-          // Container(
-          //   width: widthDevice * 0.5,
-          //   height: heightBody * 0.3,
-          //   color: Colors.orange,
-          // ),
-          // Container(
-          //   width: widthDevice * 0.5,
-          //   height: heightBody * 0.2,
-          //   color: Colors.lightGreen.shade700,
-          // ),
-        ],
+        ),
       ),
     );
   }
