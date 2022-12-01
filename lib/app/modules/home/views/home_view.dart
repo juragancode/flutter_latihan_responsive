@@ -24,21 +24,172 @@ class HomeView extends GetView<HomeController> {
 
     return Scaffold(
       appBar: myAppBar(),
-      body: Container(
-        height: 100,
-        width: 200,
-        color: Colors.orange,
-        child: Center(
-          child: FittedBox(
-            child: Text(
-              "Hallooooooooo!",
-              style: TextStyle(
-                fontSize: 30,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
+      body: Wrap(
+        direction: Axis.vertical, // standart direction horizontal
+        children: [
+          Container(
+            margin: EdgeInsets.all(8),
+            width: widthDevice * 0.12,
+            height: 45,
+            color: Colors.orange,
           ),
-        ),
+          Container(
+            margin: EdgeInsets.all(8),
+            width: widthDevice * 0.12,
+            height: 45,
+            color: Colors.orange,
+          ),
+          Container(
+            margin: EdgeInsets.all(8),
+            width: widthDevice * 0.12,
+            height: 45,
+            color: Colors.orange,
+          ),
+          Container(
+            margin: EdgeInsets.all(8),
+            width: widthDevice * 0.12,
+            height: 45,
+            color: Colors.orange,
+          ),
+          Container(
+            margin: EdgeInsets.all(8),
+            width: widthDevice * 0.12,
+            height: 45,
+            color: Colors.orange,
+          ),
+          Container(
+            margin: EdgeInsets.all(8),
+            width: widthDevice * 0.12,
+            height: 45,
+            color: Colors.orange,
+          ),
+          Container(
+            margin: EdgeInsets.all(8),
+            width: widthDevice * 0.12,
+            height: 45,
+            color: Colors.orange,
+          ),
+          Container(
+            margin: EdgeInsets.all(8),
+            width: widthDevice * 0.12,
+            height: 45,
+            color: Colors.orange,
+          ),
+          Container(
+            margin: EdgeInsets.all(8),
+            width: widthDevice * 0.12,
+            height: 45,
+            color: Colors.orange,
+          ),
+          Container(
+            margin: EdgeInsets.all(8),
+            width: widthDevice * 0.12,
+            height: 45,
+            color: Colors.orange,
+          ),
+          Container(
+            margin: EdgeInsets.all(8),
+            width: widthDevice * 0.12,
+            height: 45,
+            color: Colors.orange,
+          ),
+          Container(
+            margin: EdgeInsets.all(8),
+            width: widthDevice * 0.12,
+            height: 45,
+            color: Colors.orange,
+          ),
+          Container(
+            margin: EdgeInsets.all(8),
+            width: widthDevice * 0.12,
+            height: 45,
+            color: Colors.orange,
+          ),
+          Container(
+            margin: EdgeInsets.all(8),
+            width: widthDevice * 0.12,
+            height: 45,
+            color: Colors.orange,
+          ),
+          Container(
+            margin: EdgeInsets.all(8),
+            width: widthDevice * 0.12,
+            height: 45,
+            color: Colors.orange,
+          ),
+          Container(
+            margin: EdgeInsets.all(8),
+            width: widthDevice * 0.12,
+            height: 45,
+            color: Colors.orange,
+          ),
+          Container(
+            margin: EdgeInsets.all(8),
+            width: widthDevice * 0.12,
+            height: 45,
+            color: Colors.orange,
+          ),
+          Container(
+            margin: EdgeInsets.all(8),
+            width: widthDevice * 0.12,
+            height: 45,
+            color: Colors.orange,
+          ),
+          Container(
+            margin: EdgeInsets.all(8),
+            width: widthDevice * 0.12,
+            height: 45,
+            color: Colors.orange,
+          ),
+          Container(
+            margin: EdgeInsets.all(8),
+            width: widthDevice * 0.12,
+            height: 45,
+            color: Colors.orange,
+          ),
+          Container(
+            margin: EdgeInsets.all(8),
+            width: widthDevice * 0.12,
+            height: 45,
+            color: Colors.orange,
+          ),
+          Container(
+            margin: EdgeInsets.all(8),
+            width: widthDevice * 0.12,
+            height: 45,
+            color: Colors.orange,
+          ),
+          Container(
+            margin: EdgeInsets.all(8),
+            width: widthDevice * 0.12,
+            height: 45,
+            color: Colors.orange,
+          ),
+          Container(
+            margin: EdgeInsets.all(8),
+            width: widthDevice * 0.12,
+            height: 45,
+            color: Colors.orange,
+          ),
+          Container(
+            margin: EdgeInsets.all(8),
+            width: widthDevice * 0.12,
+            height: 45,
+            color: Colors.orange,
+          ),
+          Container(
+            margin: EdgeInsets.all(8),
+            width: widthDevice * 0.12,
+            height: 45,
+            color: Colors.orange,
+          ),
+          Container(
+            margin: EdgeInsets.all(8),
+            width: widthDevice * 0.12,
+            height: 45,
+            color: Colors.orange,
+          ),
+        ],
       ),
     );
   }
