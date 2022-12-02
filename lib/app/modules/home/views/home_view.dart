@@ -11,36 +11,39 @@ class HomeView extends GetView<HomeController> {
 
   @override
   Widget build(BuildContext context) {
-    // double widthDevice = MediaQuery.of(context).size.width;
-    // double heightDevice = MediaQuery.of(context).size.height;
-    double paddingTop =
-        context.mediaQueryPadding.top; // mediaQueryPadding merupakan fitur getx
-    double paddingBottom = MediaQuery.of(context).padding.bottom;
+    return WidgetPotrait();
+  }
+}
 
+class WidgetPotrait extends StatelessWidget {
+  const WidgetPotrait({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
     AppBar myAppBar() {
       return AppBar(
-        title: Text('Flexible'),
+        title: Text('Adaptive'),
         centerTitle: true,
       );
     }
 
-    double heightBody =
-        heightDevice - myAppBar().preferredSize.height - paddingTop;
-
     return Scaffold(
       appBar: myAppBar(),
-      body: ConstrainedBox(
-        constraints: BoxConstraints(
-          minHeight: 200,
-          minWidth: 200,
-          maxHeight: 250,
-          maxWidth: 250,
-        ),
-        child: Container(
-          width: 230,
-          height: 230,
-          color: Colors.red,
-        ),
+      body: Center(
+        // child: (MediaQuery.of(context).orientation == Orientation.portrait)
+        child: (MediaQuery.of(context).orientation == Orientation.portrait)
+            ? Container(
+                width: 230,
+                height: 230,
+                color: Colors.amber,
+              )
+            : Container(
+                width: 280,
+                height: 200,
+                color: Colors.red,
+              ),
       ),
     );
   }
