@@ -11,7 +11,7 @@ class HomeView extends GetView<HomeController> {
 
   @override
   Widget build(BuildContext context) {
-    return WidgetPotrait();
+    return context.isPortrait ? WidgetPotrait() : WidgetLanscape();
   }
 }
 
@@ -32,19 +32,37 @@ class WidgetPotrait extends StatelessWidget {
     return Scaffold(
       appBar: myAppBar(),
       body: Center(
-        // child: (MediaQuery.of(context).orientation == Orientation.portrait)
-        child: (MediaQuery.of(context).orientation == Orientation.portrait)
-            ? Container(
-                width: 230,
-                height: 230,
-                color: Colors.amber,
-              )
-            : Container(
-                width: 280,
-                height: 200,
-                color: Colors.red,
-              ),
-      ),
+          child: Container(
+        width: 230,
+        height: 230,
+        color: Colors.amber,
+      )),
+    );
+  }
+}
+
+class WidgetLanscape extends StatelessWidget {
+  const WidgetLanscape({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    AppBar myAppBar() {
+      return AppBar(
+        title: Text('Adaptive'),
+        centerTitle: true,
+      );
+    }
+
+    return Scaffold(
+      appBar: myAppBar(),
+      body: Center(
+          child: Container(
+        width: 250,
+        height: 280,
+        color: Colors.red,
+      )),
     );
   }
 }
