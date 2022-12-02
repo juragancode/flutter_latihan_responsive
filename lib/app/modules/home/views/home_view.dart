@@ -29,23 +29,18 @@ class HomeView extends GetView<HomeController> {
 
     return Scaffold(
       appBar: myAppBar(),
-      body: Container(
-        width: Get.width * 0.5,
-        height: heightBody * 0.3,
-        color: Colors.orange,
-        child: LayoutBuilder(builder: (context, constraints) {
-          double widthConst = constraints.maxWidth;
-          double heightConst = constraints.maxHeight;
-          return Stack(
-            children: [
-              Container(
-                width: widthConst * 0.5,
-                height: heightConst * 0.5,
-                color: Colors.red,
-              ),
-            ],
-          );
-        }),
+      body: ConstrainedBox(
+        constraints: BoxConstraints(
+          minHeight: 200,
+          minWidth: 200,
+          maxHeight: 250,
+          maxWidth: 250,
+        ),
+        child: Container(
+          width: 230,
+          height: 230,
+          color: Colors.red,
+        ),
       ),
     );
   }
