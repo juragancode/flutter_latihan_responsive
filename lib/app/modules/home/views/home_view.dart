@@ -21,6 +21,7 @@ class HomeView extends GetView<HomeController> {
           onTap: () => controller.selected.toggle(),
           child: Obx(
             () => AnimatedContainer(
+              curve: Curves.fastOutSlowIn,
               duration: Duration(seconds: 1),
               width: controller.selected.isFalse ? 230 : 350,
               height: controller.selected.isFalse ? 230 : 150,
