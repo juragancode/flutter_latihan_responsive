@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 
 import 'package:get/get.dart';
 
@@ -28,24 +29,23 @@ class HomeView extends GetView<HomeController> {
 
     return Scaffold(
       appBar: myAppBar(),
-      body: Column(
-        children: [
-          Container(
-            width: widthDevice * 0.5,
-            height: heightBody * 0.5,
-            color: Colors.orange,
-          ),
-          Container(
-            width: widthDevice * 0.5,
-            height: heightBody * 0.2,
-            color: Colors.red,
-          ),
-          Container(
-            width: widthDevice * 0.5,
-            height: heightBody * 0.3,
-            color: Colors.green,
-          ),
-        ],
+      body: Container(
+        width: Get.width * 0.5,
+        height: heightBody * 0.3,
+        color: Colors.orange,
+        child: LayoutBuilder(builder: (context, constraints) {
+          double widthConst = constraints.maxWidth;
+          double heightConst = constraints.maxHeight;
+          return Stack(
+            children: [
+              Container(
+                width: widthConst * 0.5,
+                height: heightConst * 0.5,
+                color: Colors.red,
+              ),
+            ],
+          );
+        }),
       ),
     );
   }
