@@ -11,38 +11,24 @@ class HomeView extends GetView<HomeController> {
 
   @override
   Widget build(BuildContext context) {
-    return OrientationBuilder(
-      builder: (context, orientation) {
-        if (orientation == Orientation.portrait) {
-          return Scaffold(
-            appBar: AppBar(
-              title: Text('Adaptive'),
-              centerTitle: true,
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Animated Container'),
+        centerTitle: true,
+      ),
+      body: Center(
+        child: GestureDetector(
+          onTap: () => controller.selected.toggle(),
+          child: Obx(
+            () => AnimatedContainer(
+              duration: Duration(seconds: 1),
+              width: controller.selected.isFalse ? 230 : 350,
+              height: controller.selected.isFalse ? 230 : 150,
+              color: controller.selected.isFalse ? Colors.green : Colors.orange,
             ),
-            body: Center(
-              child: Container(
-                width: 230,
-                height: 230,
-                color: Colors.amber,
-              ),
-            ),
-          );
-        } else {
-          return Scaffold(
-            appBar: AppBar(
-              title: Text('Adaptive'),
-              centerTitle: true,
-            ),
-            body: Center(
-              child: Container(
-                width: 250,
-                height: 280,
-                color: Colors.red,
-              ),
-            ),
-          );
-        }
-      },
+          ),
+        ),
+      ),
     );
   }
 }
