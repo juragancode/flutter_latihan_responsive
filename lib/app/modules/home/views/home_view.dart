@@ -11,58 +11,38 @@ class HomeView extends GetView<HomeController> {
 
   @override
   Widget build(BuildContext context) {
-    return context.isPortrait ? WidgetPotrait() : WidgetLanscape();
-  }
-}
-
-class WidgetPotrait extends StatelessWidget {
-  const WidgetPotrait({
-    Key? key,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    AppBar myAppBar() {
-      return AppBar(
-        title: Text('Adaptive'),
-        centerTitle: true,
-      );
-    }
-
-    return Scaffold(
-      appBar: myAppBar(),
-      body: Center(
-          child: Container(
-        width: 230,
-        height: 230,
-        color: Colors.amber,
-      )),
-    );
-  }
-}
-
-class WidgetLanscape extends StatelessWidget {
-  const WidgetLanscape({
-    Key? key,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    AppBar myAppBar() {
-      return AppBar(
-        title: Text('Adaptive'),
-        centerTitle: true,
-      );
-    }
-
-    return Scaffold(
-      appBar: myAppBar(),
-      body: Center(
-          child: Container(
-        width: 250,
-        height: 280,
-        color: Colors.red,
-      )),
+    return OrientationBuilder(
+      builder: (context, orientation) {
+        if (orientation == Orientation.portrait) {
+          return Scaffold(
+            appBar: AppBar(
+              title: Text('Adaptive'),
+              centerTitle: true,
+            ),
+            body: Center(
+              child: Container(
+                width: 230,
+                height: 230,
+                color: Colors.amber,
+              ),
+            ),
+          );
+        } else {
+          return Scaffold(
+            appBar: AppBar(
+              title: Text('Adaptive'),
+              centerTitle: true,
+            ),
+            body: Center(
+              child: Container(
+                width: 250,
+                height: 280,
+                color: Colors.red,
+              ),
+            ),
+          );
+        }
+      },
     );
   }
 }
