@@ -9,7 +9,7 @@ class HomeController extends GetxController
   late AnimationController animationC = AnimationController(
     vsync: this,
     duration: Duration(
-      milliseconds: 500,
+      milliseconds: 700,
     ),
-  )..repeat();
+  )..repeat(reverse: true);
 }

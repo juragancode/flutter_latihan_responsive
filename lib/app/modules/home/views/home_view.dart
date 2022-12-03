@@ -1,5 +1,3 @@
-import 'dart:math';
-
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
@@ -7,38 +5,35 @@ import 'package:get/get.dart';
 import '../controllers/home_controller.dart';
 
 class HomeView extends GetView<HomeController> {
-  double widthDevice = Get.width;
-  double heightDevice = Get.height;
+  double myKubus = Get.height / 3;
+
+  DecorationTween myDec = DecorationTween(
+    begin: BoxDecoration(
+      color: Colors.pink,
+      // rumus border radius bagus panjang-lebar or sisi / 2 / 3
+      borderRadius: BorderRadius.circular(Get.height / 3 * 0.5 / 3),
+    ),
+    end: BoxDecoration(
+      color: Colors.lightGreenAccent,
+      borderRadius: BorderRadius.circular(Get.height / 3 * 0.5),
+    ),
+  );
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Animated Widget'),
+        title: Text('Animated Box Transition'),
         centerTitle: true,
       ),
       body: Center(
-        child: MyWidget(myC: controller.animationC),
-      ),
-    );
-  }
-}
-
-class MyWidget extends AnimatedWidget {
-  MyWidget({Key? key, required this.myC}) : super(key: key, listenable: myC);
-
-  AnimationController myC;
-
-  get progress => listenable as Animation<double>;
-
-  @override
-  Widget build(BuildContext context) {
-    return Transform.rotate(
-      angle: progress.value * 2 * pi,
-      child: Container(
-        width: 230,
-        height: 230,
-        color: Colors.purple,
+        child: DecoratedBoxTransition(
+          decoration: myDec.animate(controller.animationC),
+          child: Container(
+            width: myKubus,
+            height: myKubus,
+          ),
+        ),
       ),
     );
   }
