@@ -20,12 +20,18 @@ class HomeView extends GetView<HomeController> {
         child: GestureDetector(
           onTap: () => controller.selected.toggle(),
           child: Obx(
-            () => AnimatedContainer(
-              curve: Curves.fastOutSlowIn,
-              duration: Duration(seconds: 1),
-              width: controller.selected.isFalse ? 230 : 350,
-              height: controller.selected.isFalse ? 230 : 150,
-              color: controller.selected.isFalse ? Colors.green : Colors.orange,
+            () => Container(
+              width: 230,
+              height: 230,
+              color: Colors.green,
+              child: AnimatedAlign(
+                curve: Curves.slowMiddle,
+                duration: Duration(milliseconds: 500),
+                alignment: controller.selected.isFalse
+                    ? Alignment.topLeft
+                    : Alignment.center,
+                child: Text("Haloooo!!!!"),
+              ),
             ),
           ),
         ),
