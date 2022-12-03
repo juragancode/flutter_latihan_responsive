@@ -17,29 +17,34 @@ class HomeView extends GetView<HomeController> {
         centerTitle: true,
       ),
       body: Center(
-        child: GestureDetector(
-          onTap: () => controller.selected.toggle(),
-          child: Container(
-            width: 230,
-            height: 230,
-            color: Colors.purple,
-            child: Stack(
-              children: [
-                Obx(
-                  () => AnimatedPositioned(
-                    curve: Curves.easeOutBack,
-                    duration: Duration(milliseconds: 500),
-                    top: controller.selected.isFalse ? 0 : 50,
-                    left: controller.selected.isFalse ? 0 : 50,
-                    child: Container(
-                      width: 130,
-                      height: 130,
-                      color: Colors.amber,
-                    ),
-                  ),
+        child: Container(
+          width: 230,
+          height: 230,
+          color: Colors.purple,
+          child: Stack(
+            children: [
+              AnimatedBuilder(
+                child: Container(
+                  width: 130,
+                  height: 130,
+                  color: Colors.amber,
                 ),
-              ],
-            ),
+                // bisa digunakan untuk membuat animasi scaner
+                // kekurangan karena looping akibatnya berat
+                animation: controller.animationC,
+                builder: (context, widget) {
+                  return AnimatedPositioned(
+                    curve: Curves.fastLinearToSlowEaseIn,
+                    duration: Duration(milliseconds: 500),
+                    top: 2 *
+                        (0.5 - (0.5 - controller.animationC.value).abs()) *
+                        100,
+                    left: controller.animationC.value * 100,
+                    child: widget!,
+                  );
+                },
+              ),
+            ],
           ),
         ),
       ),
