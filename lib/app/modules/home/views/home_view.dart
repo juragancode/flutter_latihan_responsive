@@ -20,19 +20,16 @@ class HomeView extends GetView<HomeController> {
         child: GestureDetector(
           onTap: () => controller.selected.toggle(),
           child: Obx(
-            () => AnimatedCrossFade(
-              firstChild: Container(
+            () => AnimatedOpacity(
+              // bisa digunakan untuk pesanan stok habis
+              duration: Duration(seconds: 1),
+              curve: Curves.slowMiddle,
+              opacity: controller.selected.isFalse ? 1 : 0.2,
+              child: Container(
                 width: 230,
                 height: 230,
-                color: Colors.redAccent,
+                color: Colors.red,
               ),
-              secondChild: FlutterLogo(
-                size: 300,
-              ),
-              crossFadeState: controller.selected.isFalse
-                  ? CrossFadeState.showFirst
-                  : CrossFadeState.showSecond,
-              duration: Duration(milliseconds: 1000),
             ),
           ),
         ),
