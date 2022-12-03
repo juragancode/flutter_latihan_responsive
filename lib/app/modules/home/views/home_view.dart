@@ -1,5 +1,6 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
 
 import 'package:get/get.dart';
 
@@ -13,40 +14,31 @@ class HomeView extends GetView<HomeController> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Animated Container'),
+        title: Text('Animated Widget'),
         centerTitle: true,
       ),
       body: Center(
-        child: Container(
-          width: 230,
-          height: 230,
-          color: Colors.purple,
-          child: Stack(
-            children: [
-              AnimatedBuilder(
-                child: Container(
-                  width: 130,
-                  height: 130,
-                  color: Colors.amber,
-                ),
-                // bisa digunakan untuk membuat animasi scaner
-                // kekurangan karena looping akibatnya berat
-                animation: controller.animationC,
-                builder: (context, widget) {
-                  return AnimatedPositioned(
-                    curve: Curves.fastLinearToSlowEaseIn,
-                    duration: Duration(milliseconds: 500),
-                    top: 2 *
-                        (0.5 - (0.5 - controller.animationC.value).abs()) *
-                        100,
-                    left: controller.animationC.value * 100,
-                    child: widget!,
-                  );
-                },
-              ),
-            ],
-          ),
-        ),
+        child: MyWidget(myC: controller.animationC),
+      ),
+    );
+  }
+}
+
+class MyWidget extends AnimatedWidget {
+  MyWidget({Key? key, required this.myC}) : super(key: key, listenable: myC);
+
+  AnimationController myC;
+
+  get progress => listenable as Animation<double>;
+
+  @override
+  Widget build(BuildContext context) {
+    return Transform.rotate(
+      angle: progress.value * 2 * pi,
+      child: Container(
+        width: 230,
+        height: 230,
+        color: Colors.purple,
       ),
     );
   }
