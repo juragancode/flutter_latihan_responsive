@@ -24,7 +24,7 @@ class HomeView extends GetView<HomeController> {
               width: 230,
               height: 230,
               color: Colors.green,
-              child: AnimatedAlign(
+              child: AnimatedContainer(
                 curve: Curves.slowMiddle,
                 duration: Duration(milliseconds: 500),
                 alignment: controller.selected.isFalse
