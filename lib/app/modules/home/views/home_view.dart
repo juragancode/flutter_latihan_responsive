@@ -19,17 +19,26 @@ class HomeView extends GetView<HomeController> {
       body: Center(
         child: GestureDetector(
           onTap: () => controller.selected.toggle(),
-          child: Obx(
-            () => AnimatedOpacity(
-              // bisa digunakan untuk pesanan stok habis
-              duration: Duration(seconds: 1),
-              curve: Curves.slowMiddle,
-              opacity: controller.selected.isFalse ? 1 : 0.2,
-              child: Container(
-                width: 230,
-                height: 230,
-                color: Colors.red,
-              ),
+          child: Container(
+            width: 230,
+            height: 230,
+            color: Colors.purple,
+            child: Stack(
+              children: [
+                Obx(
+                  () => AnimatedPositioned(
+                    curve: Curves.easeOutBack,
+                    duration: Duration(milliseconds: 500),
+                    top: controller.selected.isFalse ? 0 : 50,
+                    left: controller.selected.isFalse ? 0 : 50,
+                    child: Container(
+                      width: 130,
+                      height: 130,
+                      color: Colors.amber,
+                    ),
+                  ),
+                ),
+              ],
             ),
           ),
         ),
