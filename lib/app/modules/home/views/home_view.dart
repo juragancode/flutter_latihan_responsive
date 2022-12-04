@@ -20,8 +20,10 @@ class HomeView extends GetView<HomeController> {
         child: Container(
           height: 400,
           width: 400,
-          child: Lottie.network(
-            "https://assets10.lottiefiles.com/packages/lf20_6yhhrbk6.json",
+          // child: Lottie.network(
+          //   "https://assets10.lottiefiles.com/packages/lf20_6yhhrbk6.json",
+          child: Lottie.asset(
+            "assets/lottie/98432-loading.json",
             fit: BoxFit.contain,
           ),
         ),
