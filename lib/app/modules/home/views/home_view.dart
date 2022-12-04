@@ -15,10 +15,10 @@ class HomeView extends GetView<HomeController> {
       body: Center(
         child: ClipRRect(
           borderRadius: BorderRadius.only(
-            topLeft: Radius.circular(5),
+            topLeft: Radius.circular(150),
             topRight: Radius.circular(5),
             bottomRight: Radius.circular(50),
-            bottomLeft: Radius.circular(5),
+            bottomLeft: Radius.circular(150),
           ),
           child: Container(
             height: 300,
