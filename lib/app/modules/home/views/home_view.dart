@@ -13,13 +13,8 @@ class HomeView extends GetView<HomeController> {
         centerTitle: true,
       ),
       body: Center(
-        child: ClipRRect(
-          borderRadius: BorderRadius.only(
-            topLeft: Radius.circular(150),
-            topRight: Radius.circular(50),
-            bottomRight: Radius.circular(5),
-            bottomLeft: Radius.circular(150),
-          ),
+        child: ClipPath(
+          clipper: MyClip(),
           child: Container(
             height: 300,
             width: 300,
@@ -31,5 +26,21 @@ class HomeView extends GetView<HomeController> {
         ),
       ),
     );
+  }
+}
+
+class MyClip extends CustomClipper<Path> {
+  @override
+  Path getClip(Size size) {
+    Path path = Path()
+      ..lineTo(0, size.height)
+      ..lineTo(size.width, size.height)
+      ..close();
+    return path;
+  }
+
+  @override
+  bool shouldReclip(covariant CustomClipper<Path> oldClipper) {
+    return true;
   }
 }
