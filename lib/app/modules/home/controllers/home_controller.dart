@@ -1,15 +1,20 @@
-import 'package:flutter/animation.dart';
-import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class HomeController extends GetxController
-    with GetSingleTickerProviderStateMixin {
-  RxBool selected = false.obs;
+class HomeController extends GetxController {
+  //TODO: Implement HomeController
 
-  late AnimationController animationC = AnimationController(
-    vsync: this,
-    duration: Duration(
-      milliseconds: 700,
-    ),
-  )..repeat(reverse: true);
+  final count = 0.obs;
+  @override
+  void onInit() {
+    super.onInit();
+  }
+
+  @override
+  void onReady() {
+    super.onReady();
+  }
+
+  @override
+  void onClose() {}
+  void increment() => count.value++;
 }
