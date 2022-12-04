@@ -2,6 +2,7 @@ import 'package:avatar_glow/avatar_glow.dart';
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
+import 'package:lottie/lottie.dart';
 
 import '../controllers/home_controller.dart';
 
@@ -12,26 +13,16 @@ class HomeView extends GetView<HomeController> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Fade Transition'),
+        title: Text('Lottie'),
         centerTitle: true,
       ),
       body: Center(
-        child: AvatarGlow(
-          endRadius: 150,
-          glowColor: Colors.orange,
-          // curve: Curves.fastLinearToSlowEaseIn,
-          duration: Duration(
-            milliseconds: 600,
-          ),
-          child: ClipOval(
-            child: Container(
-              height: 150,
-              width: 150,
-              child: Image.network(
-                "https://picsum.photos/350/350",
-                fit: BoxFit.cover,
-              ),
-            ),
+        child: Container(
+          height: 400,
+          width: 400,
+          child: Lottie.network(
+            "https://assets10.lottiefiles.com/packages/lf20_6yhhrbk6.json",
+            fit: BoxFit.contain,
           ),
         ),
       ),
