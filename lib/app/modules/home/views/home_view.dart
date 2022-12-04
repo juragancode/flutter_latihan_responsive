@@ -1,3 +1,4 @@
+import 'package:avatar_glow/avatar_glow.dart';
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
@@ -15,13 +16,22 @@ class HomeView extends GetView<HomeController> {
         centerTitle: true,
       ),
       body: Center(
-        child: FadeTransition(
-          opacity: CurvedAnimation(
-              parent: controller.animationC, curve: Curves.fastOutSlowIn),
-          child: Container(
-            width: myKubus,
-            height: myKubus,
-            color: Colors.red,
+        child: AvatarGlow(
+          endRadius: 150,
+          glowColor: Colors.orange,
+          // curve: Curves.fastLinearToSlowEaseIn,
+          duration: Duration(
+            milliseconds: 600,
+          ),
+          child: ClipOval(
+            child: Container(
+              height: 150,
+              width: 150,
+              child: Image.network(
+                "https://picsum.photos/350/350",
+                fit: BoxFit.cover,
+              ),
+            ),
           ),
         ),
       ),
