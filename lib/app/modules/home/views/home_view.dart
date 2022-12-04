@@ -16,8 +16,8 @@ class HomeView extends GetView<HomeController> {
         child: ClipRRect(
           borderRadius: BorderRadius.only(
             topLeft: Radius.circular(150),
-            topRight: Radius.circular(5),
-            bottomRight: Radius.circular(50),
+            topRight: Radius.circular(50),
+            bottomRight: Radius.circular(5),
             bottomLeft: Radius.circular(150),
           ),
           child: Container(
