@@ -33,7 +33,8 @@ class MyPainter extends CustomPainter {
   void paint(Canvas canvas, Size size) {
     Paint myPaint = Paint()
       ..color = Colors.red
-      ..strokeWidth = 3;
+      ..strokeWidth = 5
+      ..strokeCap = StrokeCap.round;
 
     canvas.drawLine(
       Offset(0, 0),
