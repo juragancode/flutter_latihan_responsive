@@ -22,10 +22,69 @@ class HomeView extends GetView<HomeController> {
       // ),
       body: CustomScrollView(
         slivers: [
+          SliverToBoxAdapter(
+            child: SingleChildScrollView(
+              scrollDirection: Axis.horizontal,
+              child: Row(
+                children: [
+                  Container(
+                    height: 100,
+                    width: 100,
+                    color: Colors.amber,
+                  ),
+                  Container(
+                    height: 100,
+                    width: 100,
+                    color: Colors.red,
+                  ),
+                  Container(
+                    height: 100,
+                    width: 100,
+                    color: Colors.amber,
+                  ),
+                  Container(
+                    height: 100,
+                    width: 100,
+                    color: Colors.red,
+                  ),
+                  Container(
+                    height: 100,
+                    width: 100,
+                    color: Colors.amber,
+                  ),
+                  Container(
+                    height: 100,
+                    width: 100,
+                    color: Colors.red,
+                  ),
+                  Container(
+                    height: 100,
+                    width: 100,
+                    color: Colors.amber,
+                  ),
+                  Container(
+                    height: 100,
+                    width: 100,
+                    color: Colors.red,
+                  ),
+                  Container(
+                    height: 100,
+                    width: 100,
+                    color: Colors.amber,
+                  ),
+                  Container(
+                    height: 100,
+                    width: 100,
+                    color: Colors.red,
+                  ),
+                ],
+              ),
+            ),
+          ),
           SliverAppBar(
-            // pinned: true,
-            floating: true,
-            snap: true,
+            pinned: true,
+            // floating: true,
+            // snap: true,
             expandedHeight: 200,
             title: Text('Sliver List'),
             centerTitle: true,
