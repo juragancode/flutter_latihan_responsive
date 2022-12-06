@@ -25,6 +25,7 @@ class HomeView extends GetView<HomeController> {
           SliverAppBar(
             // pinned: true,
             floating: true,
+            snap: true,
             expandedHeight: 200,
             title: Text('Sliver List'),
             centerTitle: true,
