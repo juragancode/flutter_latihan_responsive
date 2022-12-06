@@ -26,19 +26,35 @@ class HomeView extends GetView<HomeController> {
               ),
             ),
           ),
-          SliverGrid.count(
-              crossAxisCount: 3,
-              children: List.generate(
-                12,
-                (index) => Container(
-                  color: Color.fromARGB(
-                    250,
-                    Random().nextInt(256),
-                    Random().nextInt(256),
-                    Random().nextInt(256),
-                  ),
+          // SliverGrid.count(
+          //   crossAxisCount: 3,
+          //   children: List.generate(
+          //     12,
+          //     (index) => Container(
+          //       color: Color.fromARGB(
+          //         250,
+          //         Random().nextInt(256),
+          //         Random().nextInt(256),
+          //         Random().nextInt(256),
+          //       ),
+          //     ),
+          //   ),
+          // ),
+          SliverGrid.extent(
+            // kalau di rotate max pixel tdk berubah atau ukuran tetap sama
+            maxCrossAxisExtent: 50,
+            children: List.generate(
+              40,
+              (index) => Container(
+                color: Color.fromARGB(
+                  250,
+                  Random().nextInt(256),
+                  Random().nextInt(256),
+                  Random().nextInt(256),
                 ),
-              )),
+              ),
+            ),
+          ),
           SliverPersistentHeader(
             pinned: true,
             delegate: MyDelegateClass(
