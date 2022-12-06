@@ -23,7 +23,8 @@ class HomeView extends GetView<HomeController> {
       body: CustomScrollView(
         slivers: [
           SliverAppBar(
-            pinned: true,
+            // pinned: true,
+            floating: true,
             expandedHeight: 200,
             title: Text('Sliver List'),
             centerTitle: true,
