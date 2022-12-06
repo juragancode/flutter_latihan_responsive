@@ -1,3 +1,4 @@
+import 'dart:math';
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
@@ -22,6 +23,7 @@ class HomeView extends GetView<HomeController> {
       body: CustomScrollView(
         slivers: [
           SliverAppBar(
+            pinned: true,
             expandedHeight: 200,
             title: Text('Sliver List'),
             centerTitle: true,
@@ -32,74 +34,24 @@ class HomeView extends GetView<HomeController> {
             ),
           ),
           SliverList(
-            delegate: SliverChildListDelegate(
-              [
-                Container(
+            delegate: SliverChildBuilderDelegate(
+              (context, index) {
+                return Container(
                   height: 200,
-                  color: Colors.pink,
+                  color: Color.fromARGB(250, Random().nextInt(256),
+                      Random().nextInt(256), Random().nextInt(256)),
                   child: Center(
                     child: Text(
-                      "Halo 1",
+                      "Halo ${index + 1}",
                       style: TextStyle(
                         fontSize: 50,
                         fontWeight: FontWeight.bold,
                       ),
                     ),
                   ),
-                ),
-                Container(
-                  height: 200,
-                  color: Colors.limeAccent,
-                  child: Center(
-                    child: Text(
-                      "Halo 2",
-                      style: TextStyle(
-                        fontSize: 50,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                  ),
-                ),
-                Container(
-                  height: 200,
-                  color: Colors.purpleAccent,
-                  child: Center(
-                    child: Text(
-                      "Halo 3",
-                      style: TextStyle(
-                        fontSize: 50,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                  ),
-                ),
-                Container(
-                  height: 200,
-                  color: Colors.orange,
-                  child: Center(
-                    child: Text(
-                      "Halo 4",
-                      style: TextStyle(
-                        fontSize: 50,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                  ),
-                ),
-                Container(
-                  height: 200,
-                  color: Colors.greenAccent.shade400,
-                  child: Center(
-                    child: Text(
-                      "Halo 5",
-                      style: TextStyle(
-                        fontSize: 50,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                  ),
-                ),
-              ],
+                );
+              },
+              childCount: 20,
             ),
           ),
         ],
