@@ -11,82 +11,14 @@ class HomeView extends GetView<HomeController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // appBar: AppBar(
-      //   // title: Text('HomeView'),
-      //   flexibleSpace: Center(
-      //     child: FlutterLogo(
-      //       size: 100,
-      //     ),
-      //   ),
-      //   centerTitle: true,
-      // ),
       body: CustomScrollView(
         slivers: [
-          SliverToBoxAdapter(
-            child: SingleChildScrollView(
-              scrollDirection: Axis.horizontal,
-              child: Row(
-                children: [
-                  Container(
-                    height: 100,
-                    width: 100,
-                    color: Colors.amber,
-                  ),
-                  Container(
-                    height: 100,
-                    width: 100,
-                    color: Colors.red,
-                  ),
-                  Container(
-                    height: 100,
-                    width: 100,
-                    color: Colors.amber,
-                  ),
-                  Container(
-                    height: 100,
-                    width: 100,
-                    color: Colors.red,
-                  ),
-                  Container(
-                    height: 100,
-                    width: 100,
-                    color: Colors.amber,
-                  ),
-                  Container(
-                    height: 100,
-                    width: 100,
-                    color: Colors.red,
-                  ),
-                  Container(
-                    height: 100,
-                    width: 100,
-                    color: Colors.amber,
-                  ),
-                  Container(
-                    height: 100,
-                    width: 100,
-                    color: Colors.red,
-                  ),
-                  Container(
-                    height: 100,
-                    width: 100,
-                    color: Colors.amber,
-                  ),
-                  Container(
-                    height: 100,
-                    width: 100,
-                    color: Colors.red,
-                  ),
-                ],
-              ),
-            ),
-          ),
           SliverAppBar(
             pinned: true,
             // floating: true,
             // snap: true,
-            expandedHeight: 200,
-            title: Text('Sliver List'),
+            expandedHeight: 120,
+            title: Text('Restorant'),
             centerTitle: true,
             flexibleSpace: Center(
               child: FlutterLogo(
@@ -94,29 +26,93 @@ class HomeView extends GetView<HomeController> {
               ),
             ),
           ),
+          SliverPersistentHeader(
+            pinned: true,
+            delegate: MyDelegateClass(
+              title: "Menu Makanan",
+              id: "501",
+              maxExtent: 250,
+              minExtent: 200,
+            ),
+          ),
           SliverList(
             delegate: SliverChildBuilderDelegate(
-              (context, index) {
-                return Container(
-                  height: 200,
-                  color: Color.fromARGB(250, Random().nextInt(256),
-                      Random().nextInt(256), Random().nextInt(256)),
-                  child: Center(
-                    child: Text(
-                      "Halo ${index + 1}",
-                      style: TextStyle(
-                        fontSize: 50,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                  ),
-                );
-              },
+              (context, index) => Container(
+                height: 100,
+                child: Center(
+                  child: Text("Menu ${index + 1}"),
+                ),
+              ),
+              childCount: 20,
+            ),
+          ),
+          SliverPersistentHeader(
+            pinned: true,
+            delegate: MyDelegateClass(
+              title: "Menu Minuman",
+              id: "500",
+              maxExtent: 250,
+              minExtent: 200,
+            ),
+          ),
+          SliverList(
+            delegate: SliverChildBuilderDelegate(
+              (context, index) => Container(
+                height: 100,
+                child: Center(
+                  child: Text("Menu ${index + 1}"),
+                ),
+              ),
               childCount: 20,
             ),
           ),
         ],
       ),
     );
+  }
+}
+
+class MyDelegateClass extends SliverPersistentHeaderDelegate {
+  MyDelegateClass({
+    required this.title,
+    required this.id,
+    required this.maxExtent,
+    required this.minExtent,
+  });
+
+  double maxExtent;
+  double minExtent;
+  String title;
+  String id;
+
+  @override
+  Widget build(
+      BuildContext context, double shrinkOffset, bool overlapsContent) {
+    // widget yang akan di build
+    return Stack(
+      children: [
+        Container(
+          width: Get.width,
+          child: Image.network(
+            "https://picsum.photos/500/$id",
+            fit: BoxFit.cover,
+          ),
+        ),
+        Center(
+          child: Text(
+            title,
+            style: TextStyle(
+              fontWeight: FontWeight.bold,
+              fontSize: 40,
+            ),
+          ),
+        ),
+      ],
+    );
+  }
+
+  @override
+  bool shouldRebuild(covariant SliverPersistentHeaderDelegate oldDelegate) {
+    return false;
   }
 }
