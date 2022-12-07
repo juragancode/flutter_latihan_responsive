@@ -17,7 +17,7 @@ class DatabaseIntsance {
   final String name = "name";
   final String category = "category";
   final String createdAt = "created_at";
-  final String updatedAt = "created_at";
+  final String updatedAt = "updated_at";
 
   Database? _database;
   Future<Database> database() async {

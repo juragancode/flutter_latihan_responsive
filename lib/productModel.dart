@@ -11,7 +11,7 @@ class ProductModel {
       name: json["name"],
       category: json["category"],
       createdAt: json["created_at"],
-      updatedAt: json["created_at"],
+      updatedAt: json["updated_at"],
     );
   }
 }

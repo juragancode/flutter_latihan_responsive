@@ -1,7 +1,24 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_latihan_responsive/databaseInstance.dart';
 
-class CreateScreen extends StatelessWidget {
-  const CreateScreen({Key? key}) : super(key: key);
+class CreateScreen extends StatefulWidget {
+  @override
+  State<CreateScreen> createState() => _CreateScreenState();
+}
+
+class _CreateScreenState extends State<CreateScreen> {
+  // const CreateScreen({Key? key}) : super(key: key);
+  DatabaseIntsance databaseIntsance = DatabaseIntsance();
+
+  TextEditingController nameC = TextEditingController();
+
+  TextEditingController categoryC = TextEditingController();
+
+  @override
+  void initState() {
+    databaseIntsance.database();
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -12,29 +29,42 @@ class CreateScreen extends StatelessWidget {
       ),
       body: Padding(
         padding: const EdgeInsets.all(20),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            TextField(
-              autocorrect: false,
-              decoration: InputDecoration(
-                border: OutlineInputBorder(),
-                labelText: "Product Name",
+        child: Center(
+          child: ListView(
+            children: [
+              TextField(
+                controller: nameC,
+                autocorrect: false,
+                decoration: InputDecoration(
+                  border: OutlineInputBorder(),
+                  labelText: "Product Name",
+                ),
               ),
-            ),
-            TextField(
-              autocorrect: false,
-              decoration: InputDecoration(
-                border: OutlineInputBorder(),
-                labelText: "Category",
+              SizedBox(height: 15),
+              TextField(
+                controller: categoryC,
+                autocorrect: false,
+                decoration: InputDecoration(
+                  border: OutlineInputBorder(),
+                  labelText: "Category",
+                ),
               ),
-            ),
-            SizedBox(height: 15),
-            ElevatedButton(
-              onPressed: () {},
-              child: Text("Save"),
-            ),
-          ],
+              SizedBox(height: 10),
+              ElevatedButton(
+                onPressed: () async {
+                  await databaseIntsance.insert({
+                    "name": nameC.text,
+                    "category": categoryC.text,
+                    "created_at": DateTime.now().toString(),
+                    "updated_at": DateTime.now().toString(),
+                  });
+                  Navigator.pop(context);
+                  setState(() {});
+                },
+                child: Text("Save"),
+              ),
+            ],
+          ),
         ),
       ),
     );
