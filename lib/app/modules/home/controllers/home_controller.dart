@@ -1,20 +1,20 @@
 import 'package:get/get.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class HomeController extends GetxController {
-  //TODO: Implement HomeController
+  RxString data = "'No data available...".obs;
 
-  final count = 0.obs;
-  @override
-  void onInit() {
-    super.onInit();
+  void simpanData() async {
+    print("Simpan Data");
+    final prefs = await SharedPreferences.getInstance();
+    await prefs.setString('name', 'Laura');
   }
 
-  @override
-  void onReady() {
-    super.onReady();
+  void bacaData() async {
+    print("Baca Data");
+    final prefs = await SharedPreferences.getInstance();
+    if (prefs.getString('name') != null) {
+      data.value = prefs.getString('name')!;
+    }
   }
-
-  @override
-  void onClose() {}
-  void increment() => count.value++;
 }

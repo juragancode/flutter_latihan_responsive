@@ -1,71 +1,43 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_latihan_responsive/create.dart';
-import 'package:flutter_latihan_responsive/databaseInstance.dart';
-import 'package:flutter_latihan_responsive/productModel.dart';
 
 import 'package:get/get.dart';
 
 import '../controllers/home_controller.dart';
 
-class HomeView extends StatefulWidget {
-  @override
-  State<HomeView> createState() => _HomeViewState();
-}
-
-class _HomeViewState extends State<HomeView> {
-  DatabaseIntsance databaseIntsance = DatabaseIntsance();
-
-  Future _refresh() async {
-    setState(() {});
-  }
-
-  @override
-  void initState() {
-    databaseIntsance.database();
-    super.initState();
-  }
-
+class HomeView extends GetView<HomeController> {
   @override
   Widget build(BuildContext context) {
+    controller.bacaData();
+
     return Scaffold(
       appBar: AppBar(
+        title: Text('HomeView'),
         centerTitle: true,
-        title: Text("sqflite"),
-        actions: [
-          IconButton(
-            onPressed: () {
-              Get.to(
-                CreateScreen(),
-              );
-            },
-            icon: Icon(Icons.add),
-          )
-        ],
       ),
-      body: FutureBuilder<List<ProductModel>>(
-        future: databaseIntsance.all(),
-        builder: (context, snapshot) {
-          if (snapshot.hasData) {
-            if (snapshot.data!.length == 0) {
-              return Center(
-                child: Text("Data Empty..."),
-              );
-            }
-            return ListView.builder(
-              itemCount: snapshot.data!.length,
-              itemBuilder: (context, index) => ListTile(
-                title: Text(snapshot.data![index].name ?? ""),
-                subtitle: Text(snapshot.data![index].category ?? ""),
-              ),
-            );
-          } else {
-            return Center(
-              child: CircularProgressIndicator(
-                color: Colors.green,
-              ),
-            );
-          }
-        },
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Obx(() => Text(
+                  '${controller.data}',
+                  style: TextStyle(fontSize: 20),
+                )),
+            SizedBox(height: 20),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: [
+                ElevatedButton(
+                  onPressed: () => controller.simpanData(),
+                  child: Text("Simpan Data"),
+                ),
+                ElevatedButton(
+                  onPressed: () {},
+                  child: Text("Remove Data"),
+                ),
+              ],
+            ),
+          ],
+        ),
       ),
     );
   }
