@@ -7,12 +7,20 @@ import '../controllers/home_controller.dart';
 class HomeView extends GetView<HomeController> {
   @override
   Widget build(BuildContext context) {
-    controller.bacaData();
+    // controller.bacaData();
 
     return Scaffold(
       appBar: AppBar(
         title: Text('HomeView'),
         centerTitle: true,
+        actions: [
+          IconButton(
+            onPressed: () {
+              controller.resetData();
+            },
+            icon: Icon(Icons.restore),
+          ),
+        ],
       ),
       body: Center(
         child: Column(
@@ -27,12 +35,12 @@ class HomeView extends GetView<HomeController> {
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
                 ElevatedButton(
-                  onPressed: () => controller.simpanData(),
-                  child: Text("Simpan Data"),
+                  onPressed: () => controller.decrement(),
+                  child: Text("-"),
                 ),
                 ElevatedButton(
-                  onPressed: () {},
-                  child: Text("Remove Data"),
+                  onPressed: () => controller.increment(),
+                  child: Text("+"),
                 ),
               ],
             ),
