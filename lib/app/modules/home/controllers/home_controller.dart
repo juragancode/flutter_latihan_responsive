@@ -26,7 +26,7 @@ class HomeController extends GetxController {
 
   void bacaData() async {
     if (box.read('angkaTerakhir') != null) {
-      data.value = box.read('angkaTerakhir')!;
+      data.value = box.read('angkaTerakhir')! as int;
     }
   }
 
@@ -42,12 +42,4 @@ class HomeController extends GetxController {
     bacaData();
     super.onInit();
   }
-
-  // void bacaData() async {
-  //   print("Baca Data");
-  //   final prefs = await SharedPreferences.getInstance();
-  //   if (prefs.getString('name') != null) {
-  //     data.value = prefs.getString('name')!;
-  //   }
-  // }
 }
