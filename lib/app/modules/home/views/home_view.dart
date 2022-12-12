@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_latihan_responsive/app/data/models/note_model.dart';
+import 'package:flutter_latihan_responsive/app/routes/app_pages.dart';
 
 import 'package:get/get.dart';
 
@@ -7,45 +9,53 @@ import '../controllers/home_controller.dart';
 class HomeView extends GetView<HomeController> {
   @override
   Widget build(BuildContext context) {
-    // controller.bacaData();
-
     return Scaffold(
       appBar: AppBar(
-        title: Text('HomeView'),
+        title: Text('Home View'),
         centerTitle: true,
-        actions: [
-          IconButton(
-            onPressed: () {
-              controller.resetData();
-            },
-            icon: Icon(Icons.restore),
-          ),
-        ],
       ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Obx(() => Text(
-                  '${controller.data}',
-                  style: TextStyle(fontSize: 20),
-                )),
-            SizedBox(height: 20),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: [
-                ElevatedButton(
-                  onPressed: () => controller.decrement(),
-                  child: Text("-"),
-                ),
-                ElevatedButton(
-                  onPressed: () => controller.increment(),
-                  child: Text("+"),
-                ),
-              ],
-            ),
-          ],
-        ),
+      body: FutureBuilder(
+        future: controller.getAllNote(),
+        builder: (context, snap) {
+          if (snap.connectionState == ConnectionState.waiting) {
+            return Center(
+              child: CircularProgressIndicator(),
+            );
+          }
+          return Obx(
+            () => (controller.allNote.length == 0)
+                ? Center(
+                    child: Text("No Data..."),
+                  )
+                : ListView.builder(
+                    itemCount: controller.allNote.length,
+                    itemBuilder: (context, index) {
+                      Note note = controller.allNote[index];
+                      return ListTile(
+                        onTap: () => Get.toNamed(
+                          Routes.EDIT_NOTE,
+                          arguments: note,
+                        ),
+                        leading: CircleAvatar(
+                          child: Text("${note.id}"),
+                        ),
+                        title: Text("${note.title}"),
+                        subtitle: Text("${note.description}"),
+                        trailing: IconButton(
+                          onPressed: () => controller.deleteNote(note.id!),
+                          icon: Icon(
+                            Icons.delete,
+                          ),
+                        ),
+                      );
+                    },
+                  ),
+          );
+        },
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () => Get.toNamed(Routes.ADD_NOTE),
+        child: Icon(Icons.add),
       ),
     );
   }
