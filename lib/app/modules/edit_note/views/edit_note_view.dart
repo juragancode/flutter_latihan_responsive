@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_latihan_responsive/app/data/models/note_model.dart';
+import 'package:flutter_latihan_responsive/app/data/note_database.dart';
 import 'package:flutter_latihan_responsive/app/modules/home/controllers/home_controller.dart';
 
 import 'package:get/get.dart';
@@ -11,8 +11,8 @@ class EditNoteView extends GetView<EditNoteController> {
   Note note = Get.arguments;
   @override
   Widget build(BuildContext context) {
-    controller.titleC.text = note.title!;
-    controller.descriptionC.text = note.description!;
+    controller.titleC.text = note.title;
+    controller.descC.text = note.desc;
     return Scaffold(
       appBar: AppBar(
         title: Text('Edit Note'),
@@ -28,9 +28,9 @@ class EditNoteView extends GetView<EditNoteController> {
               border: OutlineInputBorder(),
             ),
           ),
-          SizedBox(height: 10),
+          SizedBox(height: 15),
           TextField(
-            controller: controller.descriptionC,
+            controller: controller.descC,
             decoration: InputDecoration(
               labelText: "Description",
               border: OutlineInputBorder(),
@@ -41,15 +41,22 @@ class EditNoteView extends GetView<EditNoteController> {
             () => ElevatedButton(
               onPressed: () async {
                 if (controller.isLoading.isFalse) {
-                  controller.editNote(note.id!);
-                  await homeC.getAllNote();
+                  controller.isLoading.value = true;
+                  await homeC.noteM.updateNote(
+                    Note(
+                      id: note.id,
+                      title: controller.titleC.text,
+                      desc: controller.descC.text,
+                    ),
+                  );
+                  controller.isLoading.value = false;
                   Get.back();
                 }
               },
               child: Text(
-                  controller.isLoading.isFalse ? "Edit Note" : "Loading..."),
+                  (controller.isLoading.isFalse) ? "Edit Note" : "Loading..."),
             ),
-          ),
+          )
         ],
       ),
     );

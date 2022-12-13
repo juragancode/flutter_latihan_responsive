@@ -2,23 +2,22 @@ name: flutter_latihan_responsive
 version: 1.0.0+1
 publish_to: none
 description: A new Flutter project.
-environment: 
+environment:
   sdk: '>=2.16.0 <3.0.0'
 
-dependencies: 
+dependencies:
   cupertino_icons: ^1.0.2
-  get_storage: 2.0.3
   get: 4.6.5
-  sqflite: 2.0.2
-  path_provider: 2.0.11
-  flutter: 
+  moor_flutter: 4.1.0
+  flutter:
     sdk: flutter
 
-dev_dependencies: 
+dev_dependencies:
   flutter_lints: ^1.0.0
-  flutter_test: 
+  moor_generator: 4.6.0+1
+  build_runner: 2.2.0
+  flutter_test:
     sdk: flutter
 
-flutter: 
+flutter:
   uses-material-design: true
-

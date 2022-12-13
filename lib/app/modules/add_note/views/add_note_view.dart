@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_latihan_responsive/app/data/note_database.dart';
 import 'package:flutter_latihan_responsive/app/modules/home/controllers/home_controller.dart';
 
 import 'package:get/get.dart';
@@ -24,9 +25,9 @@ class AddNoteView extends GetView<AddNoteController> {
               border: OutlineInputBorder(),
             ),
           ),
-          SizedBox(height: 10),
+          SizedBox(height: 15),
           TextField(
-            controller: controller.descriptionC,
+            controller: controller.descC,
             decoration: InputDecoration(
               labelText: "Description",
               border: OutlineInputBorder(),
@@ -37,13 +38,19 @@ class AddNoteView extends GetView<AddNoteController> {
             () => ElevatedButton(
               onPressed: () async {
                 if (controller.isLoading.isFalse) {
-                  controller.addNote();
-                  await homeC.getAllNote();
+                  controller.isLoading.value = true;
+                  await homeC.noteM.insertNote(
+                    Note(
+                      title: controller.titleC.text,
+                      desc: controller.descC.text,
+                    ),
+                  );
+                  controller.isLoading.value = false;
                   Get.back();
                 }
               },
               child: Text(
-                  controller.isLoading.isFalse ? "Add Note" : "Loading..."),
+                  (controller.isLoading.isFalse) ? "Add Note" : "Loading..."),
             ),
           ),
         ],
