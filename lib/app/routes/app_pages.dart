@@ -21,14 +21,14 @@ class AppPages {
       binding: HomeBinding(),
     ),
     GetPage(
-      name: _Paths.ADD_NOTE,
-      page: () => AddNoteView(),
-      binding: AddNoteBinding(),
-    ),
-    GetPage(
       name: _Paths.EDIT_NOTE,
       page: () => EditNoteView(),
       binding: EditNoteBinding(),
+    ),
+    GetPage(
+      name: _Paths.ADD_NOTE,
+      page: () => AddNoteView(),
+      binding: AddNoteBinding(),
     ),
   ];
 }

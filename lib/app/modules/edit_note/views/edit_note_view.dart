@@ -1,18 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_latihan_responsive/app/data/note_database.dart';
-import 'package:flutter_latihan_responsive/app/modules/home/controllers/home_controller.dart';
 
 import 'package:get/get.dart';
 
 import '../controllers/edit_note_controller.dart';
+import '../../../data/db/database.dart';
 
 class EditNoteView extends GetView<EditNoteController> {
-  final HomeController homeC = Get.find();
-  Note note = Get.arguments;
+  Notes note = Get.arguments;
   @override
   Widget build(BuildContext context) {
-    controller.titleC.text = note.title;
-    controller.descC.text = note.desc;
+    controller.titleC.text = note.title!;
+    controller.descC.text = note.desc!;
     return Scaffold(
       appBar: AppBar(
         title: Text('Edit Note'),
@@ -22,18 +20,20 @@ class EditNoteView extends GetView<EditNoteController> {
         padding: EdgeInsets.all(20),
         children: [
           TextField(
+            autocorrect: false,
             controller: controller.titleC,
             decoration: InputDecoration(
-              labelText: "Title",
               border: OutlineInputBorder(),
+              labelText: "title",
             ),
           ),
           SizedBox(height: 15),
           TextField(
+            autocorrect: false,
             controller: controller.descC,
             decoration: InputDecoration(
-              labelText: "Description",
               border: OutlineInputBorder(),
+              labelText: "description",
             ),
           ),
           SizedBox(height: 10),
@@ -41,22 +41,14 @@ class EditNoteView extends GetView<EditNoteController> {
             () => ElevatedButton(
               onPressed: () async {
                 if (controller.isLoading.isFalse) {
-                  controller.isLoading.value = true;
-                  await homeC.noteM.updateNote(
-                    Note(
-                      id: note.id,
-                      title: controller.titleC.text,
-                      desc: controller.descC.text,
-                    ),
-                  );
-                  controller.isLoading.value = false;
+                  await controller.editNote(note);
                   Get.back();
                 }
               },
               child: Text(
-                  (controller.isLoading.isFalse) ? "Edit Note" : "Loading..."),
+                  controller.isLoading.isFalse ? "Edit Note" : "Loading..."),
             ),
-          )
+          ),
         ],
       ),
     );
